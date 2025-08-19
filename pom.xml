@@ -30,7 +30,7 @@
 		<java.version>17</java.version>
 	</properties>
 
-	<dependencies>
+<dependencies>
 		<!-- 資料庫配置 -->
 		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,9 +52,13 @@
 
 		<!-- JSTL 標籤庫 -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 		</dependency>
 
 
