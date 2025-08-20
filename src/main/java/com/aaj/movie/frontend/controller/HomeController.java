@@ -1,4 +1,4 @@
-package com.aaj.movie.movie.controller;
+package com.aaj.movie.frontend.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
