@@ -71,24 +71,35 @@ body {
 
         /* 分頁按鈕 */
         .pagination {
-            text-align: center;
-            padding: 20px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 20px;
+        background: #222;
+        border-top: 1px solid #ddd;
         }
 
         .pagination button {
             padding: 8px 15px;
             margin: 5px;
             border: none;
-            background: #ff9800;
+            /* background: #ff9800; */
+            background: #222;
             color: white;
             border-radius: 5px;
             cursor: pointer;
+
         }
 
         .pagination button:hover {
-            background: #e68900;
+            /* background: #e68900; */
+            background: #ff9800;
         }
 
         .pagination button.active {
-            background: #222;
+            /* background: #222; */
+            background: #ff9800;
+
         }

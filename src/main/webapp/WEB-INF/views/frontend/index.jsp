@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文暨電影院</title>
-    <link rel="stylesheet" type="text/css" href="/frontend/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/frontend/css/index.css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     <!-- 分頁 -->
     <div class="pagination" id="pagination"></div>
 
-    <script src="/frontend/js/script.js"></script>
+    <script src="/frontend/js/index.js"></script>
 
 </body>
 
