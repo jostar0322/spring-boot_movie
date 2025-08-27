@@ -1,21 +1,26 @@
 const moviesPerPage = 9; // 每頁9張
         let currentPage = 1;
 
-        // 模擬電影資料
-        const moviesData = [
-            { title: "電影名稱 1", desc: "介紹文字 1", img: "" },
-            { title: "電影名稱 2", desc: "介紹文字 2", img: "" },
-            { title: "電影名稱 3", desc: "介紹文字 3", img: "" },
-            { title: "電影名稱 4", desc: "介紹文字 4", img: "" },
-            { title: "電影名稱 5", desc: "介紹文字 5", img: "" },
-            { title: "電影名稱 6", desc: "介紹文字 6", img: "" },
-            { title: "電影名稱 7", desc: "介紹文字 7", img: "" },
-            { title: "電影名稱 8", desc: "介紹文字 8", img: "" },
-            { title: "電影名稱 9", desc: "介紹文字 9", img: "" },
-            { title: "電影名稱 10", desc: "介紹文字 10", img: "" },
-            { title: "電影名稱 11", desc: "介紹文字 11", img: "" },
-            { title: "電影名稱 12", desc: "介紹文字 12", img: "" }
-        ];
+        // 從後端 API 取得電影資料
+        let moviesData = [];
+
+        async function fetchMovies() {
+            try {
+                const response = await fetch('/api/movies');
+                if (!response.ok) throw new Error('載入失敗');
+                const data = await response.json();
+                // 後端欄位: id, title, description, img
+                moviesData = data.map(m => ({
+                    title: m.title,
+                    desc: m.description,
+                    img: m.img || ''
+                }));
+                renderMovies();
+                renderPagination();
+            } catch (e) {
+                alert('無法載入電影資料');
+            }
+        }
 
         function renderMovies() {
             const container = document.querySelector('.movie-container');
@@ -54,6 +59,5 @@ const moviesPerPage = 9; // 每頁9張
             }
         }
 
-        // 初始化
-        renderMovies();
-        renderPagination();
+    // 初始化
+    fetchMovies();
