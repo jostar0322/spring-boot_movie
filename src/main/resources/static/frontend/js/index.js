@@ -9,11 +9,16 @@ const moviesPerPage = 9; // 每頁9張
                 const response = await fetch('/api/movies');
                 if (!response.ok) throw new Error('載入失敗');
                 const data = await response.json();
-                // 後端欄位: id, title, description, img
+                // 後端欄位: id, title, director, subtitle, rating, description, premiereDate, duration, posterUrl
                 moviesData = data.map(m => ({
                     title: m.title,
-                    desc: m.description,
-                    img: m.img || ''
+                    subtitle: m.subtitle || '',
+                    director: m.director || '未知導演',
+                    rating: m.rating || 'PG',
+                    desc: m.description || '暫無描述',
+                    img: m.posterUrl || '/frontend/img/no.png', //如果沒有圖片，使用預設圖片
+                    duration: m.duration || 0,
+                    premiereDate: m.premiereDate || ''
                 }));
                 renderMovies();
                 renderPagination();
@@ -34,8 +39,13 @@ const moviesPerPage = 9; // 每頁9張
                 card.className = 'movie-card';
                 card.innerHTML = `
         <img src="${movie.img}" alt="${movie.title}">
-        <h3>${movie.title}</h3>
-        <p>${movie.desc}</p>
+        <h3>電影名稱: ${movie.title}</h3>
+        <p class="director">導演: ${movie.director}</p>
+        ${movie.subtitle ? `<p class="subtitle">字幕: ${movie.subtitle}</p>` : ''}
+        <p class="rating">分級: ${movie.rating}</p>
+        <p class="description">電影介紹: ${movie.desc}</p>
+        ${movie.premiereDate ? `<p class="premiere-date">上映日期: ${movie.premiereDate}</p>` : ''}
+        <p class="duration">片長: ${movie.duration ? movie.duration + '分鐘' : '未知'}</p>
         `;
                 container.appendChild(card);
             });
